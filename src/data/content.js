@@ -1,7 +1,7 @@
 export const stats = [
   { number: '5', label: 'Bedrooms' },
   { number: '6.5', label: 'Bathrooms' },
-  { number: '7,825', label: 'Starting At' },
+  { number: '7,825 sq ft', label: 'Starting At' },
   { number: '11', label: 'Villas' },
 ];
 
@@ -40,31 +40,31 @@ export const galleryImages = [
 
 export const floorData = {
   1: [
-    { name: 'Living Space',          size: '7,825.35 sq ft',  sqm: '727.00 sqm'   },
-    { name: 'Outdoor Space',         size: '2,497.22 sq ft',  sqm: '232.00 sqm'   },
-    { name: "Owner's Closet",        size: '136.70 sq ft',    sqm: '12.70 sqm',   type: 'no-border' },
-    { name: 'Sub-Total',             size: '10,459.28 sq ft', sqm: '971.70 sqm',  type: 'subtotal' },
-    { name: 'Covered Parking',       size: '532.81 sq ft',    sqm: '49.50 sqm'    },
-    { name: 'Semi-Covered Parking',  size: '355.21 sq ft',    sqm: '33.00 sqm'    },
-    { name: 'Total',                 size: '11,347.30 sq ft', sqm: '1,054.20 sqm', type: 'total' },
+    { name: 'Living Space', size: '7,825.35 sq ft', sqm: '727.00 sqm' },
+    { name: 'Outdoor Space', size: '2,497.22 sq ft', sqm: '232.00 sqm' },
+    { name: "Owner's Closet", size: '136.70 sq ft', sqm: '12.70 sqm', type: 'no-border' },
+    { name: 'Sub-Total', size: '10,459.28 sq ft', sqm: '971.70 sqm', type: 'subtotal' },
+    { name: 'Covered Parking', size: '532.81 sq ft', sqm: '49.50 sqm' },
+    { name: 'Semi-Covered Parking', size: '355.21 sq ft', sqm: '33.00 sqm' },
+    { name: 'Total', size: '11,347.30 sq ft', sqm: '1,054.20 sqm', type: 'total' },
   ],
   2: [
-    { name: 'Living Space',         size: '9,294.63 sq ft',  sqm: '863.50 sqm'   },
-    { name: 'Outdoor Space',        size: '2,540.28 sq ft',  sqm: '236.00 sqm'   },
-    { name: "Owner's Closet",       size: '136.70 sq ft',    sqm: '12.70 sqm',   type: 'no-border' },
-    { name: 'Sub-Total',            size: '11,971.61 sq ft', sqm: '1,112.20 sqm', type: 'subtotal' },
-    { name: 'Covered Parking',      size: '532.81 sq ft',    sqm: '49.50 sqm'    },
-    { name: 'Semi-Covered Parking', size: '355.21 sq ft',    sqm: '33.00 sqm'    },
-    { name: 'Total',                size: '12,859.63 sq ft', sqm: '1,194.70 sqm', type: 'total' },
+    { name: 'Living Space', size: '9,294.63 sq ft', sqm: '863.50 sqm' },
+    { name: 'Outdoor Space', size: '2,540.28 sq ft', sqm: '236.00 sqm' },
+    { name: "Owner's Closet", size: '136.70 sq ft', sqm: '12.70 sqm', type: 'no-border' },
+    { name: 'Sub-Total', size: '11,971.61 sq ft', sqm: '1,112.20 sqm', type: 'subtotal' },
+    { name: 'Covered Parking', size: '532.81 sq ft', sqm: '49.50 sqm' },
+    { name: 'Semi-Covered Parking', size: '355.21 sq ft', sqm: '33.00 sqm' },
+    { name: 'Total', size: '12,859.63 sq ft', sqm: '1,194.70 sqm', type: 'total' },
   ],
   3: [
-    { name: 'Living Space',         size: '9,215.28 sq ft',  sqm: '856.60 sqm'   },
-    { name: 'Outdoor Space',        size: '3,154.87 sq ft',  sqm: '293.00 sqm'   },
-    { name: "Owner's Closet",       size: '179.75 sq ft',    sqm: '16.70 sqm',   type: 'no-border' },
-    { name: 'Sub-Total',            size: '12,553.94 sq ft', sqm: '1,166.30 sqm', type: 'subtotal' },
-    { name: 'Covered Parking',      size: '710.42 sq ft',    sqm: '66.00 sqm'    },
-    { name: 'Semi-Covered Parking', size: '355.21 sq ft',    sqm: '33.00 sqm'    },
-    { name: 'Total',                size: '13,619.56 sq ft', sqm: '1,265.56 sqm', type: 'total' },
+    { name: 'Living Space', size: '9,215.28 sq ft', sqm: '856.60 sqm' },
+    { name: 'Outdoor Space', size: '3,154.87 sq ft', sqm: '293.00 sqm' },
+    { name: "Owner's Closet", size: '179.75 sq ft', sqm: '16.70 sqm', type: 'no-border' },
+    { name: 'Sub-Total', size: '12,553.94 sq ft', sqm: '1,166.30 sqm', type: 'subtotal' },
+    { name: 'Covered Parking', size: '710.42 sq ft', sqm: '66.00 sqm' },
+    { name: 'Semi-Covered Parking', size: '355.21 sq ft', sqm: '33.00 sqm' },
+    { name: 'Total', size: '13,619.56 sq ft', sqm: '1,265.56 sqm', type: 'total' },
   ],
 };
 
