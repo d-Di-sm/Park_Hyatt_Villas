@@ -1141,7 +1141,7 @@ section {
 
 .sordo-panel-container {
   position: relative;
-  height: 360px;
+  height: 440px;
   overflow: hidden;
 }
 
@@ -2593,7 +2593,11 @@ section {
   }
   .sordo-panel-container {
     height: auto;
-    min-height: 320px;
+    min-height: 0;
+    overflow: visible;
+  }
+  .sordo-panel {
+    position: relative;
   }
   .sordo-tabs {
     margin: 24px 0 32px;

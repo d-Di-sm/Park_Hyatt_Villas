@@ -46,12 +46,12 @@ const PANELS = [
 const panelVariants = {
   enter: { opacity: 0, y: 24 },
   center: { opacity: 1, y: 0 },
-  exit:  { opacity: 0, y: -16 },
+  exit: { opacity: 0, y: -16 },
 };
 
 export default function SordoMadaleno() {
-  const [imgIdx,   setImgIdx]   = useState(0);
-  const [panel,    setPanel]    = useState(0);
+  const [imgIdx, setImgIdx] = useState(0);
+  const [panel, setPanel] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
 
   const nextImg = useCallback(
@@ -105,27 +105,27 @@ export default function SordoMadaleno() {
 
           {/* Animated panel */}
           <div className="sordo-panel-container">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={panel}
-              className="sordo-panel"
-              variants={panelVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.55, ease: 'easeOut' }}
-            >
-              <h2 className="sordo-title">
-                {active.title}<br /><em>{active.accent}</em>
-              </h2>
-              {active.body.map((text, i) => (
-                <p className="sordo-body" key={i}>{text}</p>
-              ))}
-              {active.callout && (
-                <p className="sordo-callout">{active.callout}</p>
-              )}
-            </motion.div>
-          </AnimatePresence>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={panel}
+                className="sordo-panel"
+                variants={panelVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.55, ease: 'easeOut' }}
+              >
+                <h2 className="sordo-title">
+                  {active.title}<br /><em>{active.accent}</em>
+                </h2>
+                {active.body.map((text, i) => (
+                  <p className="sordo-body" key={i}>{text}</p>
+                ))}
+                {active.callout && (
+                  <p className="sordo-callout">{active.callout}</p>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           {/* Progress bar */}
