@@ -27,7 +27,7 @@ export default function WhereWeStand() {
 
             <Reveal delay={0.36}>
               <div className="wws-callout">
-                <span>Our residences are sold out.</span>
+                <span>A number of villas remain available, private viewings upon request.</span>
               </div>
             </Reveal>
 

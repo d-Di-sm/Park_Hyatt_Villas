@@ -3,7 +3,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Reveal from './Reveal.jsx';
 import { hotelImages } from '../data/content.js';
 
-const VISIBLE = 4;
+function getVisible() {
+  if (typeof window === 'undefined') return 4;
+  if (window.innerWidth <= 480) return 1;
+  if (window.innerWidth <= 900) return 2;
+  return 4;
+}
 
 const GOLF_IMAGES = [
   '/hotel/Tee01.jpg',
@@ -13,8 +18,19 @@ const GOLF_IMAGES = [
 ];
 
 export default function Amenities({ onSelect }) {
+  const [visible, setVisible] = useState(getVisible);
   const [current, setCurrent] = useState(0);
-  const max = Math.max(0, hotelImages.length - VISIBLE);
+  const max = Math.max(0, hotelImages.length - visible);
+
+  useEffect(() => {
+    const onResize = () => {
+      const v = getVisible();
+      setVisible(v);
+      setCurrent(0);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const next = useCallback(() => setCurrent((c) => (c >= max ? 0 : c + 1)), [max]);
   const prev = () => setCurrent((c) => (c <= 0 ? max : c - 1));
@@ -44,12 +60,13 @@ export default function Amenities({ onSelect }) {
       <div className="slider-track-wrapper">
         <div
           className="slider-track"
-          style={{ transform: `translateX(-${current * 25}%)` }}
+          style={{ transform: `translateX(-${current * (100 / visible)}%)` }}
         >
           {hotelImages.map((src, i) => (
             <div
               className="slider-slide"
               key={src + i}
+              style={{ flex: `0 0 ${100 / visible}%` }}
               onClick={() => onSelect?.({ src, alt: 'Hotel view' })}
             >
               <img src={src} alt="Hotel view" loading="lazy" />

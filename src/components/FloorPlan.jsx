@@ -4,14 +4,14 @@ import FloorPlanLightbox from './FloorPlanLightbox.jsx';
 import { floorData } from '../data/content.js';
 
 const slides = [
-  { src: '/images/Patio3.png',     label: 'Patio'        },
-  { src: '/images/Bath01.png',     label: 'Master Bath'  },
-  { src: '/images/Bedroom01.png',  label: 'Master Suite' },
-  { src: '/images/Kitchen02.png',  label: 'Kitchen'      },
-  { src: '/images/Molcajete.png',  label: 'Dining Room'  },
-  { src: '/images/BATH 03.png',    label: 'Bath'         },
-  { src: '/images/Hall01.png',     label: 'Hall'         },
-  { src: '/images/Hall02.png',     label: 'Hall'         },
+  { src: '/images/Patio3.png', label: 'Patio' },
+  { src: '/images/Bath01.png', label: 'Master Bath' },
+  { src: '/images/Bedroom01.png', label: 'Master Suite' },
+  { src: '/images/Kitchen02.png', label: 'Kitchen' },
+  { src: '/images/Molcajete.png', label: 'Dining Room' },
+  { src: '/images/BATH 03.png', label: 'Bath' },
+  { src: '/images/Hall01.png', label: 'Hall' },
+  { src: '/images/Hall02.png', label: 'Hall' },
 ];
 
 
@@ -20,36 +20,36 @@ const FLOORS = [
     id: 1,
     label: 'Type 01',
     images: [
-      { src: '/plans/Type01/Planta Baja_Villa 1.png', sub: 'Planta Baja' },
-      { src: '/plans/Type01/Sotano_Villa 1.png',      sub: 'Sótano'      },
+      { src: '/plans/Type01/Planta Baja_Villa 1.png', sub: 'Ground Floor' },
+      { src: '/plans/Type01/Sotano_Villa 1.png', sub: 'Lower Level' },
     ],
     hqImages: [
-      { src: '/plans/Type01/Planta Baja_Villa 1_HQ.png', sub: 'Planta Baja' },
-      { src: '/plans/Type01/Sotano_Villa 1_HQ.png',      sub: 'Sótano'      },
+      { src: '/plans/Type01/Planta Baja_Villa 1_HQ.png', sub: 'Ground Floor' },
+      { src: '/plans/Type01/Sotano_Villa 1_HQ.png', sub: 'Lower Level' },
     ],
   },
   {
     id: 2,
     label: 'Type 02',
     images: [
-      { src: '/plans/Type02/Planta Baja_Villa5.png', sub: 'Planta Baja' },
-      { src: '/plans/Type02/Sotano_Villa5.png',      sub: 'Sótano'      },
+      { src: '/plans/Type02/Planta Baja_Villa5.png', sub: 'Ground Floor' },
+      { src: '/plans/Type02/Sotano_Villa5.png', sub: 'Lower Level' },
     ],
     hqImages: [
-      { src: '/plans/Type02/Planta Baja_Villa5_HQ.png', sub: 'Planta Baja' },
-      { src: '/plans/Type02/Sotano_Villa5_HQ.png',      sub: 'Sótano'      },
+      { src: '/plans/Type02/Planta Baja_Villa5_HQ.png', sub: 'Ground Floor' },
+      { src: '/plans/Type02/Sotano_Villa5_HQ.png', sub: 'Lower Level' },
     ],
   },
   {
     id: 3,
     label: 'Type 03',
     images: [
-      { src: '/plans/Type03/Planta Baja_villa9.png', sub: 'Planta Baja' },
-      { src: '/plans/Type03/Sotano_villa9.png',      sub: 'Sótano'      },
+      { src: '/plans/Type03/Planta Baja_villa9.png', sub: 'Ground Floor' },
+      { src: '/plans/Type03/Sotano_villa9.png', sub: 'Lower Level' },
     ],
     hqImages: [
-      { src: '/plans/Type03/Planta Baja_villa9_HQ.png', sub: 'Planta Baja' },
-      { src: '/plans/Type03/Sotano_villa9_HQ.png',      sub: 'Sótano'      },
+      { src: '/plans/Type03/Planta Baja_villa9_HQ.png', sub: 'Ground Floor' },
+      { src: '/plans/Type03/Sotano_villa9_HQ.png', sub: 'Lower Level' },
     ],
   },
 ];
@@ -60,8 +60,8 @@ export default function FloorPlan() {
   const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length);
   useEffect(() => { const t = setInterval(next, 4500); return () => clearInterval(t); }, [next]);
 
-  const [active, setActive]       = useState(1);
-  const [subIdx, setSubIdx]       = useState(0);
+  const [active, setActive] = useState(1);
+  const [subIdx, setSubIdx] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const currentFloor = FLOORS.find((f) => f.id === active);
@@ -89,12 +89,12 @@ export default function FloorPlan() {
           </div>
           <button className="vc-btn vc-prev" onClick={prev} aria-label="Previous">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M11 3L5 9l6 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M11 3L5 9l6 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
           <button className="vc-btn vc-next" onClick={next} aria-label="Next">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M7 3l6 6-6 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M7 3l6 6-6 6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
         </div>
@@ -188,7 +188,7 @@ export default function FloorPlan() {
                 />
                 <div className="fp-zoom-hint">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M10 2h4v4M10 6l4-4M6 14H2v-4M6 10l-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+                    <path d="M10 2h4v4M10 6l4-4M6 14H2v-4M6 10l-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
                   </svg>
                   <span>Ver HQ</span>
                 </div>
