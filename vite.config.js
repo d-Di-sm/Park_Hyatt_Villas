@@ -7,4 +7,5 @@ export default defineConfig({
     port: 5173,
     open: true,
   },
+  base: process.env.VITE_BASE_PATH || "/Park_Hyatt_Villas",
 });
