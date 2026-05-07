@@ -1,18 +1,46 @@
 import { useState } from 'react';
 import Reveal from './Reveal.jsx';
 
-export default function Contact() {
-  const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
+const INITIAL = { firstName: '', lastName: '', email: '', phone: '', interest: '', message: '' };
 
-  const handleSubmit = (e) => {
+export default function Contact() {
+  const [fields, setFields] = useState(INITIAL);
+  const [honeypot, setHoneypot] = useState('');
+  const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const handleChange = (e) => {
+    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      setSuccess(true);
-      e.target.reset();
-    }, 1200);
+    if (status === 'loading') return;
+
+    setStatus('loading');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...fields, website: honeypot }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error || 'Something went wrong. Please try again.');
+        setStatus('error');
+        return;
+      }
+
+      setStatus('success');
+      setFields(INITIAL);
+    } catch {
+      setErrorMsg('Network error. Please check your connection and try again.');
+      setStatus('error');
+    }
   };
 
   return (
@@ -53,27 +81,77 @@ export default function Contact() {
               Request a Viewing
             </p>
             <form className="contact-form" onSubmit={handleSubmit}>
+              {/* Honeypot — hidden from real users; bots fill it in */}
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ display: 'none' }}
+              />
+
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="firstName">First Name</label>
-                  <input type="text" id="firstName" name="firstName" placeholder="Alexandra" />
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="Alexandra"
+                    value={fields.firstName}
+                    onChange={handleChange}
+                    disabled={status === 'loading'}
+                  />
                 </div>
                 <div className="form-group">
                   <label htmlFor="lastName">Last Name</label>
-                  <input type="text" id="lastName" name="lastName" placeholder="Worthington" />
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="Worthington"
+                    value={fields.lastName}
+                    onChange={handleChange}
+                    disabled={status === 'loading'}
+                  />
                 </div>
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="a.worthington@email.com" />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="a.worthington@email.com"
+                  value={fields.email}
+                  onChange={handleChange}
+                  disabled={status === 'loading'}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+1 (310) 000 0000" />
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+1 (310) 000 0000"
+                  value={fields.phone}
+                  onChange={handleChange}
+                  disabled={status === 'loading'}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="interest">Enquiry Type</label>
-                <select id="interest" name="interest" defaultValue="">
+                <select
+                  id="interest"
+                  name="interest"
+                  value={fields.interest}
+                  onChange={handleChange}
+                  disabled={status === 'loading'}
+                >
                   <option value="" disabled>
                     Select an option
                   </option>
@@ -89,15 +167,33 @@ export default function Contact() {
                   id="message"
                   name="message"
                   placeholder="Please share any specific requirements or questions…"
+                  value={fields.message}
+                  onChange={handleChange}
+                  disabled={status === 'loading'}
                 />
               </div>
-              {!success && (
-                <button type="submit" className="btn-submit" disabled={submitting}>
-                  {submitting ? 'Sending…' : 'Submit Enquiry'}
+
+              {status !== 'success' && (
+                <button type="submit" className="btn-submit" disabled={status === 'loading'}>
+                  {status === 'loading' ? 'Sending…' : 'Submit Enquiry'}
                 </button>
               )}
-              {success && (
-                <div
+
+              {status === 'error' && (
+                <p
+                  style={{
+                    fontSize: 13,
+                    color: '#c0392b',
+                    letterSpacing: '0.05em',
+                    paddingTop: 8,
+                  }}
+                >
+                  {errorMsg}
+                </p>
+              )}
+
+              {status === 'success' && (
+                <p
                   style={{
                     fontSize: 13,
                     color: 'var(--gold)',
@@ -106,7 +202,7 @@ export default function Contact() {
                   }}
                 >
                   Thank you — we will be in touch shortly.
-                </div>
+                </p>
               )}
             </form>
           </Reveal>
